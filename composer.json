@@ -1,0 +1,31 @@
+{
+    "name": "sokoji/yii2-select-yandex-map-location",
+    "description": "Yii2 widget to select location at map and choose map coordinates (uses Yandex Maps)",
+    "type": "package",
+    "version": "dev-master",
+    "reference": "ae1b0c5d2b37fef9322c7f48654c906e",
+    "keywords": [
+        "yii2", "framework", "widgets", "location", "map", "yandex"
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "2.*"
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Max Kalyabin",
+            "email": "maksim@kalyabin.ru"
+        },
+        {
+            "name": "Kirill Arutyunov",
+            "email": "kirill@arutynov.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "sokoji\\maplocation\\": ""
+        }
+    },
+    "minimum-stability": "dev"
+}
