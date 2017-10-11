@@ -65,9 +65,10 @@
             };
             if (defaults.lat && defaults.lng) {
                 var center = [defaults.lng, defaults.lat];
+                var mark = createMark(center, defaults.text);
                 myMap.setCenter(center);
-                mySearchResults.add(createMark(center, defaults.text));
-                setLatLngAttributes(center);
+                mySearchResults.add(mark);
+                setLatLngAttributes(mark);
             }
         });
 
@@ -78,10 +79,9 @@
         };
 
         var createMark = function (coords, text) {
-            var myPlacemark = new ymaps.Placemark(coords, {
+            return new ymaps.Placemark(coords, {
                 balloonContentHeader: text
             });
-            return myPlacemark;
         }
 
     };
