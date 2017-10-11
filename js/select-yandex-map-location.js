@@ -89,7 +89,7 @@
 
         var setAddress = function(searchResult){
            $(options.address).val(
-               searchResult.properties._data.address
+               searchResult.properties._data.text
            );
 
         };
