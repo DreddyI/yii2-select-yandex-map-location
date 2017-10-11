@@ -50,18 +50,39 @@
             mySearchControl.events.add('resultselect', function (e) {
                 var index = e.get('index');
                 mySearchControl.getResult(index).then(function (res) {
-                    console.log(res);
                     mySearchResults.removeAll();
                     mySearchResults.add(res);
+                    setLatLngAttributes(res)
                 });
             }).add('submit', function () {
                 mySearchResults.removeAll();
             });
+
+            var defaults = {
+                'lat': $(options.latitude).val(),
+                'lng': $(options.longitude).val(),
+                'text': $(options.address).val()
+            };
+            if (defaults.lat && defaults.lng) {
+                var center = [defaults.lng, defaults.lat];
+                myMap.setCenter(center);
+                mySearchResults.add(createMark(center, defaults.text));
+                setLatLngAttributes(center);
+            }
         });
 
         var setLatLngAttributes = function (point) {
-            $(options.latitude).val(point.lat());
-            $(options.longitude).val(point.lng());
+            var coords = point.geometry.getCoordinates();
+            $(options.latitude).val(coords[1]);
+            $(options.longitude).val(coords[0]);
         };
+
+        var createMark = function (coords, text) {
+            var myPlacemark = new ymaps.Placemark(coords, {
+                balloonContentHeader: text
+            });
+            return myPlacemark;
+        }
+
     };
 })(jQuery);
