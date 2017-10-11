@@ -49,8 +49,8 @@
             // Выбранный результат помещаем в коллекцию.
             mySearchControl.events.add('resultselect', function (e) {
                 var index = e.get('index');
-                console.log(e);
                 mySearchControl.getResult(index).then(function (res) {
+                    console.log(res);
                     mySearchResults.removeAll();
                     mySearchResults.add(res);
                 });
