@@ -50,7 +50,6 @@
             mySearchControl.events.add('resultselect', function (e) {
                 var index = e.get('index');
                 mySearchControl.getResult(index).then(function (res) {
-                    console.log(res);
                     mySearchResults.removeAll();
                     mySearchResults.add(res);
                     setLatLngAttributes(res);
