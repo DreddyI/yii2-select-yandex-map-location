@@ -50,9 +50,11 @@
             mySearchControl.events.add('resultselect', function (e) {
                 var index = e.get('index');
                 mySearchControl.getResult(index).then(function (res) {
+                    console.log(res);
                     mySearchResults.removeAll();
                     mySearchResults.add(res);
-                    setLatLngAttributes(res)
+                    setLatLngAttributes(res);
+                    setAddress(res);
                 });
             }).add('submit', function () {
                 mySearchResults.removeAll();
@@ -67,6 +69,7 @@
                 var center = [defaults.lng, defaults.lat];
                 var mark = createMark(center, defaults.text);
                 myMap.setCenter(center);
+                mySearchResults.removeAll();
                 mySearchResults.add(mark);
                 setLatLngAttributes(mark);
             }
@@ -82,7 +85,14 @@
             return new ymaps.Placemark(coords, {
                 balloonContentHeader: text
             });
-        }
+        };
+
+        var setAddress = function(searchResult){
+           $(options.address).val(
+               searchResult.properties._data.address
+           );
+
+        };
 
     };
 })(jQuery);
